@@ -29,6 +29,8 @@ class ProductBrand(models.Model):
         string="Number of products", compute="_compute_products_count"
     )
 
+    active = fields.Boolean(default=True)
+
     @api.depends("product_ids")
     def _compute_products_count(self):
         product_model = self.env["product.template"]
